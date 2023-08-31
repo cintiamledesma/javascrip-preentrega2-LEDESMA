@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Carrito de compras</title>
+</head>
+<body>
+  <script>
+// Definir variables
+let totalPresupuesto = 0;
+const productos = [];
+
+// Función para agregar un producto y su costo 
+function agregarProducto(nombre, costo) {
+    productos.push({ nombre, costo });
+    totalPresupuesto += costo;
+}
+
+// Agregar productos y sus costos del comprador hasta que decida detenerse
+while (true) {
+    const nombreProducto = prompt("Ingrese el nombre del producto (o escriba 'fin' para terminar):");
+    
+    if (nombreProducto.toLowerCase() === "fin") {
+        break;
+    }
+    
+    const costoProducto = parseFloat(prompt(`Ingrese el costo del producto "${nombreProducto}":`));
+    
+    agregarProducto(nombreProducto, costoProducto);
+}
+
+// Mostrar el resumen del presupuesto al usuario
+let resumen = "Productos a comprar:\n";
+for (const producto of productos) {
+    resumen += `${producto.nombre}: $${producto.costo}\n`;
+}
+resumen += `Subtotal: $${totalPresupuesto}`;
+
+alert(resumen);
+
+
+
+
+
+// Obtener el precio de compra y el descuento del usuario
+const precioCompra = parseFloat(prompt("Reingrese Subtotal"));
+const descuento = parseFloat(prompt("Ingrese el porcentaje de descuento:"));
+
+// Calcular el precio después del descuento
+const descuentoAplicado = (totalPresupuesto * descuento) / 100;
+const precioConDescuento = totalPresupuesto - descuentoAplicado;
+
+
+
+
+// Mostrar el resultado al usuario
+alert(`Subtotal: $${totalPresupuesto}\nDescuento: ${descuento}%\nTotal a pagar: $${precioConDescuento}`);
+
+  </script>  
+</body>
+</html>
